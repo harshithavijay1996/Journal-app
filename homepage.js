@@ -1,18 +1,15 @@
-const notesCont=document.querySelector(".freeform");
-const butn=document.querySelector(".btn");
-let notes=document.querySelectorAll(".input-box");
-
-butn.addEventListener("click", ()=> {
-    let inputBox=document.createElement("p");
-    let img = document.createElement("img");
-    inputBox.className="input-box";
-    inputBox.setAttribute("contenteditable","true");
-    img.src="images/trash-solid.jpg";
-    notesCont.appendChild(inputBox).appendChild(img);
-})
-
-notesCont.addEventListener("click", function(el){
-    if(el.target.tagName=== "IMG"){
-        el.target.parentElement.remove(); 
+document.addEventListener('DOMContentLoaded', function() {
+  class JournalEntry {
+    constructor(notes) {
+      this.notes = notes;
     }
-})
+  }
+  function submitJournalEntry(event) {
+    event.preventDefault(); 
+    const notes = document.getElementById('freeform').value;
+    const newEntry = new JournalEntry(notes);
+    console.log(newEntry);
+  }
+  const journalForm = document.getElementById('journalForm');
+  journalForm.addEventListener('submit', submitJournalEntry);
+});
