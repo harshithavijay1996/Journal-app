@@ -1,22 +1,23 @@
-function register(e){
-    e.preventDefault();
-    let firstName= document.getElementById("firstname").value;
-    let lastName= document.getElementById("lastame").value;
-    let username= document.getElementById("username").value;
-    let dob= document.getElementById("dob").value;
-    let password= document.getElementById("password").value;
-
-let details = {
-    firstName: firstName,
-    lastName:lastName,
-    username :username,
-    dob :dob,
-    password: password
-};
-console.log(details);
-
-};
-document.addEventListener('DOMContentLoaded',function(){
-    let registerform = document.getElementById("registerForm")
-    registerform.addEventListener('submit', register); 
+document.addEventListener('DOMContentLoaded', function() {
+  class User {
+    constructor(firstName, lastName, username, dateOfBirth, password) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.username = username;
+      this.dateOfBirth = dateOfBirth;
+      this.password = password;
+    }
+  }
+  function register(event) {
+    event.preventDefault();
+    const firstName = document.getElementById('firstname').value;
+    const lastName = document.getElementById('lastname').value;
+    const username = document.getElementById('username').value;
+    const dateOfBirth = document.getElementById('dateofbirth').value;
+    const password = document.getElementById('password').value;
+    const newUser = new User(firstName, lastName, username, dateOfBirth, password);
+    console.log(newUser);
+  }
+  const registerForm = document.getElementById('registerForm');
+  registerForm.addEventListener('submit', register);
 });
